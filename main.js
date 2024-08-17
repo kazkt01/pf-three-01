@@ -58,7 +58,11 @@ scene.add(spotLight);
 // GLTFモデルの読み込み
 let mesh;
 const loader = new GLTFLoader();
-const modelPath = "./90s_desktop_pc_-_psx/scene.gltf";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://pf-three-01-ws68-bofhvt3xy-kazkt01s-projects.vercel.app"
+    : "";
+const modelPath = `${baseUrl}/90s_desktop_pc_-_psx/scene.gltf`;
 console.log("Attempting to load:", modelPath);
 
 loader.load(
