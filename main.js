@@ -53,7 +53,7 @@ scene.add(spotLight);
 
 let mesh;
 
-const loader = new GLTFLoader().setPath("/90s_desktop_pc_-_psx/");
+const loader = new GLTFLoader().setPath("/90s_desktop_pc_-_psx/scene.gltf");
 loader.load(
   "scene.gltf",
   (gltf) => {
