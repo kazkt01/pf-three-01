@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "./node_modules/three/examples/jsm/loaders/GLTFLoader";
+import { OrbitControls } from "./node_modules/three/examples/jsm/controls/OrbitControls";
 
 // レンダラーの設定
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -58,10 +58,13 @@ scene.add(spotLight);
 // GLTFモデルの読み込み
 let mesh;
 const loader = new GLTFLoader();
+const modelPath = "./90s_desktop_pc_-_psx/scene.gltf";
+console.log("Attempting to load:", modelPath);
+
 loader.load(
-  "/90s_desktop_pc_-_psx/scene.gltf",
+  modelPath,
   (gltf) => {
-    console.log("loading model");
+    console.log("Model loaded successfully");
     mesh = gltf.scene;
 
     mesh.traverse((child) => {
@@ -80,10 +83,10 @@ loader.load(
     document.getElementById("progress-container").style.display = "none";
   },
   (xhr) => {
-    console.log(`loading ${(xhr.loaded / xhr.total) * 100}%`);
+    console.log(`Loading progress: ${(xhr.loaded / xhr.total) * 100}%`);
   },
   (error) => {
-    console.error("An error happened", error);
+    console.error("An error happened while loading the model:", error);
   }
 );
 
